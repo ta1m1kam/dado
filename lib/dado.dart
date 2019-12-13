@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
+import 'package:shell/shell.dart';
 
 const undoneMark = '\x1b[32m\u2610\x1b[0m';
 const doneMark = '\x1b[31m\u2611\x1b[0m';
@@ -57,6 +58,6 @@ void done(int number) {
     onDone: () { },
     onError: (e) { print(e.toString()); });
 
-//  file.deleteSync(recursive: true);
+  Shell().start('rm', ['file2.txt']);
   newFile.rename('file.txt');
 }
