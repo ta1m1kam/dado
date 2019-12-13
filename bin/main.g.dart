@@ -18,6 +18,7 @@ Options _$parseOptionsResult(ArgResults result) =>
       _$ActionEnumMap, result['action'] as String)
     ..add = result['add'] as String
     ..list = result['list'] as bool
+    ..done = result['done'] as String
     ..help = result['help'] as bool;
 
 const _$ActionEnumMap = <Action, String> {
@@ -28,6 +29,7 @@ const _$ActionEnumMap = <Action, String> {
 ArgParser _$populateOptionsParser(ArgParser parser) => parser
   ..addOption('add', abbr: 'a', help: 'Required. The name to use in greeting.')
   ..addFlag('list', abbr: 'l', help: 'Required. The name to use in greeting.', negatable: false)
+  ..addOption('done', abbr: 'd', help: 'Required. The name to use in greeting.')
   ..addOption('action', abbr: 't', defaultsTo: 'list', allowed: ['add', 'list'])
   ..addFlag('help', abbr: 'h', help: 'Prints usage information.', negatable: false);
 

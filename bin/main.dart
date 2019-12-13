@@ -15,6 +15,9 @@ class Options {
   @CliOption(abbr: 'list', help: 'Required. The name to use in the greeting.')
   bool list;
 
+  @CliOption(abbr: 'done', help: 'Required. The name to use in the greeting.')
+  String done;
+
  @CliOption(defaultsTo: Action.add, abbr: 'l')
   Action displayAction;
 
@@ -45,6 +48,9 @@ void main(List<String> args) {
    add(options.add);
  } else if (options.list) {
    list();
+ } else if (options.done != null) {
+   var number = int.parse(options.done);
+   done(number);
  }
 }
 
