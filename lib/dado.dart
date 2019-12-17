@@ -61,3 +61,77 @@ void done(int number) {
   Shell().start('rm', ['file2.txt']);
   newFile.rename('file.txt');
 }
+
+void undone(int number) {
+  File('file2.txt').create(recursive: true);
+  var newFile = File('file2.txt');
+  var sink = newFile.openWrite();
+  final file = File('file.txt');
+  Stream<List<int>> inputStream = file.openRead();
+
+  var cnt = 1;
+  inputStream
+    .transform(utf8.decoder)
+    .transform(LineSplitter())
+    .listen((String line) {
+    if (cnt == number && line.startsWith('-')) {
+      var undoneLine = line.replaceFirst('-', '');
+      sink.write('$undoneLine\n');
+    } else {
+      sink.write('$line\n');
+    }
+    cnt += 1;
+  },
+    onDone: () { },
+    onError: (e) { print(e.toString()); });
+
+  Shell().start('rm', ['file2.txt']);
+  newFile.rename('file.txt');
+}
+
+void remove(int number) {
+  File('file2.txt').create(recursive: true);
+  var newFile = File('file2.txt');
+  var sink = newFile.openWrite();
+  final file = File('file.txt');
+  Stream<List<int>> inputStream = file.openRead();
+
+  var cnt = 1;
+  inputStream
+    .transform(utf8.decoder)
+    .transform(LineSplitter())
+    .listen((String line) {
+      var match = cnt == number;
+      if (!match) {
+        sink.write('$line\n');
+      }
+    cnt += 1;
+  },
+    onDone: () { },
+    onError: (e) { print(e.toString()); });
+
+  Shell().start('rm', ['file2.txt']);
+  newFile.rename('file.txt');
+}
+
+void clean() {
+  File('file2.txt').create(recursive: true);
+  var newFile = File('file2.txt');
+  var sink = newFile.openWrite();
+  final file = File('file.txt');
+  Stream<List<int>> inputStream = file.openRead();
+
+  inputStream
+    .transform(utf8.decoder)
+    .transform(LineSplitter())
+    .listen((String line) {
+    if (!line.startsWith('-')) {
+      sink.write('$line\n');
+    }
+  },
+    onDone: () { },
+    onError: (e) { print(e.toString()); });
+
+  Shell().start('rm', ['file2.txt']);
+  newFile.rename('file.txt');
+}

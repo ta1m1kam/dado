@@ -18,16 +18,23 @@ class Options {
   @CliOption(abbr: 'done', help: 'Required. The name to use in the greeting.')
   String done;
 
- @CliOption(defaultsTo: Action.add, abbr: 'l')
-  Action displayAction;
+  @CliOption(abbr: 'undone', help: 'Required. The name to use in the greeting.')
+  String undone;
+
+  @CliOption(abbr: 'remove', help: 'Required. The name to use in the greeting.')
+  String remove;
+
+  @CliOption(abbr: 'clean', help: 'Required. The name to use in the greeting.')
+  bool clean;
+
+  @CliOption(abbr: 'sort', help: 'Required. The name to use in the greeting.')
+  bool sort;
 
  @CliOption(abbr: 'h', negatable: false, help: 'Prints usage information.')
   bool help;
 
   Options();
 }
-
-enum Action { add, list }
 
 void main(List<String> args) {
  Options options;
@@ -51,10 +58,18 @@ void main(List<String> args) {
  } else if (options.done != null) {
    var number = int.parse(options.done);
    done(number);
+ } else if (options.undone != null) {
+   var number = int.parse(options.undone);
+   undone(number);
+ } else if (options.remove != null) {
+   var number = int.parse(options.remove);
+   remove(number);
+ } else if (options.clean) {
+   clean();
  }
 }
 
 void _printUsage() {
-  print('Usage: example/example.dar');
+  print('Usage: dado.dar');
   print(_$parserForOptions.usage);
 }

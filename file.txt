@@ -1,3 +1,2 @@
 hoge
--fugo
-piyo
+fugo
