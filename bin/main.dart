@@ -27,9 +27,6 @@ class Options {
   @CliOption(abbr: 'clean', help: 'Required. The name to use in the greeting.')
   bool clean;
 
-  @CliOption(abbr: 'sort', help: 'Required. The name to use in the greeting.')
-  bool sort;
-
  @CliOption(abbr: 'h', negatable: false, help: 'Prints usage information.')
   bool help;
 

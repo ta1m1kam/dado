@@ -8,7 +8,6 @@ Options _$parseOptionsResult(ArgResults result) =>
     ..undone = result['undone'] as String
     ..remove = result['remove'] as String
     ..clean = result['clean'] as bool
-    ..sort = result['sort'] as bool
     ..help = result['help'] as bool;
 
 ArgParser _$populateOptionsParser(ArgParser parser) => parser
@@ -18,7 +17,6 @@ ArgParser _$populateOptionsParser(ArgParser parser) => parser
   ..addOption('undone', abbr: 'u', help: 'Required. The name to use in greeting.')
   ..addOption('remove', abbr: 'r', help: 'Required. The name to use in greeting.')
   ..addFlag('clean', abbr: 'c', help: 'Required. The name to use in greeting.')
-  ..addFlag('sort', abbr: 's', help: 'Required. The name to use in greeting.')
   ..addFlag('help', abbr: 'h', help: 'Prints usage information.', negatable: false);
 
 final _$parserForOptions = _$populateOptionsParser(ArgParser());

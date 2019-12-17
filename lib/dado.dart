@@ -6,7 +6,6 @@ import 'package:shell/shell.dart';
 const undoneMark = '\x1b[32m\u2610\x1b[0m';
 const doneMark = '\x1b[31m\u2611\x1b[0m';
 
-
 void list() {
   final file = File('file.txt');
   Stream<List<int>> inputStream = file.openRead();
