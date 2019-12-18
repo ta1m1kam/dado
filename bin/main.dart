@@ -9,22 +9,22 @@ part 'main.g.dart';
 
 @CliOptions()
 class Options {
-  @CliOption(abbr: 'add', help: 'Required. The name to use in the greeting.')
+  @CliOption(abbr: 'add', help: 'add task to list')
   String add;
 
-  @CliOption(abbr: 'list', help: 'Required. The name to use in the greeting.')
+  @CliOption(abbr: 'list', help: 'watch task list')
   bool list;
 
-  @CliOption(abbr: 'done', help: 'Required. The name to use in the greeting.')
+  @CliOption(abbr: 'done', help: 'done task')
   String done;
 
-  @CliOption(abbr: 'undone', help: 'Required. The name to use in the greeting.')
+  @CliOption(abbr: 'undone', help: 'undone task')
   String undone;
 
-  @CliOption(abbr: 'remove', help: 'Required. The name to use in the greeting.')
+  @CliOption(abbr: 'remove', help: 'remove task from list')
   String remove;
 
-  @CliOption(abbr: 'clean', help: 'Required. The name to use in the greeting.')
+  @CliOption(abbr: 'clean', help: 'clean done tasks from list')
   bool clean;
 
  @CliOption(abbr: 'h', negatable: false, help: 'Prints usage information.')
